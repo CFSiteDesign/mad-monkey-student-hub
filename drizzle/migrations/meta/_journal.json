@@ -8,6 +8,13 @@
       "when": 1792034431799,
       "tag": "0000_create_student_ambassador_applications",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792036930662,
+      "tag": "0001_student_hub_admins",
+      "breakpoints": true
     }
   ]
 }

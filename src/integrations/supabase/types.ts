@@ -59,12 +59,31 @@ export type Database = {
         }
         Relationships: []
       }
+      student_hub_admins: {
+        Row: {
+          created_at: string
+          email: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_student_hub_admin: { Args: never; Returns: boolean }
+      is_student_hub_admin_email: {
+        Args: { p_email: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
