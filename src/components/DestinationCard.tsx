@@ -18,7 +18,9 @@ export function DestinationCard({ d, index }: { d: Destination; index: number })
     if (!v || failed) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const io = new IntersectionObserver(
-      ([e]) => {
+      (entries) => {
+        const e = entries[0];
+        if (!e) return;
         if (e.isIntersecting && !reduce) v.play().catch(() => {});
         else v.pause();
       },
