@@ -93,7 +93,7 @@ function Index() {
           <div className="relative mx-auto max-w-6xl px-4 pb-20 pt-12 sm:px-6 sm:pt-20 lg:pb-28">
             <Reveal>
               <h1 className="headline max-w-4xl text-[2.9rem] sm:text-7xl lg:text-8xl">
-                Become a <span className="bg-primary px-2 text-primary-foreground ring-4 ring-background [box-decoration-break:clone]">Mad Monkey</span> Student Travel Ambassador
+                Become a <span className="bg-primary px-2 text-primary-foreground [box-decoration-break:clone]">Mad Monkey</span> Student Travel Ambassador
               </h1>
               <p className="mt-8 max-w-2xl text-xl font-extrabold sm:text-2xl">
                 Love travel, events and bringing people together? <span className="bg-secondary px-1">This one's for you.</span>
