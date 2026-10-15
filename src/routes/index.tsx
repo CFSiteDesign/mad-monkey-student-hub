@@ -53,9 +53,9 @@ const faqs: { q: string; a: string[] }[] = [
   { q: "What happens after I apply?", a: ["We'll review your application and invite shortlisted applicants for an informal chat with our team."] },
 ];
 
-function ApplyBtn({ label = "Apply now", variant = "primary" as const, size = "lg" as const }: { label?: string; variant?: "primary" | "lime" | "ink"; size?: "sm" | "md" | "lg" }) {
+function ApplyBtn({ label = "Apply now", variant = "primary" as const, size = "lg" as const, outline = false }: { label?: string; variant?: "primary" | "lime" | "ink"; size?: "sm" | "md" | "lg"; outline?: boolean }) {
   return (
-    <Link to="/apply" className={pillClass({ variant, size, className: "text-center" })}>
+    <Link to="/apply" className={pillClass({ variant, size, className: cn("text-center", outline && "ring-4 ring-background") })}>
       {label}
     </Link>
   );
