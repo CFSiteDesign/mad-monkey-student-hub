@@ -77,17 +77,17 @@ function Login() {
     e.preventDefault();
     setErr(null); setInfo(null);
     const em = email.trim().toLowerCase();
-    if (!em) return setErr("Enter your email.");
+    if (!em) { setErr("Enter your email."); return; }
     setBusy(true);
     try {
       if (mode === "signin") {
         const { error } = await supabase.auth.signInWithPassword({ email: em, password: pw });
         if (error) setErr(error.message);
       } else if (mode === "signup") {
-        if (pw.length < 8) return setErr("Use at least 8 characters for your password.");
+        if (pw.length < 8) { setErr("Use at least 8 characters for your password."); return; }
         const { data: ok, error: rpcErr } = await supabase.rpc("is_student_hub_admin_email", { p_email: em });
-        if (rpcErr) return setErr("Something went wrong. Please try again.");
-        if (!ok) return setErr("This email doesn't have admin access.");
+        if (rpcErr) { setErr("Something went wrong. Please try again."); return; }
+        if (!ok) { setErr("This email doesn't have admin access."); return; }
         const { error } = await supabase.auth.signUp({ email: em, password: pw, options: { emailRedirectTo: `${window.location.origin}/admin` } });
         if (error) setErr(error.message);
         else setInfo("Check your inbox to confirm your email, then sign in here.");
@@ -164,8 +164,8 @@ function Dashboard({ email, onSignOut }: { email: string; onSignOut: () => void 
   useEffect(load, [load]);
 
   const counts = useMemo(() => {
-    const c = { all: 0, new: 0, shortlisted: 0, rejected: 0 } as Record<string, number>;
-    for (const r of rows ?? []) { c.all++; c[r.status] = (c[r.status] ?? 0) + 1; }
+    const c: Record<string, number> = { all: 0, new: 0, shortlisted: 0, rejected: 0 };
+    for (const r of rows ?? []) { c["all"] = (c["all"] ?? 0) + 1; c[r.status] = (c[r.status] ?? 0) + 1; }
     return c;
   }, [rows]);
 
@@ -329,7 +329,7 @@ function Dashboard({ email, onSignOut }: { email: string; onSignOut: () => void 
 }
 
 function Badge({ s }: { s: string }) {
-  return <span className={cn("inline-block rounded-full px-3 py-1 text-xs font-extrabold uppercase", BADGE[s] ?? BADGE.rejected)}>{LABEL[s] ?? s}</span>;
+  return <span className={cn("inline-block rounded-full px-3 py-1 text-xs font-extrabold uppercase", BADGE[s] ?? BADGE["rejected"])}>{LABEL[s] ?? s}</span>;
 }
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {

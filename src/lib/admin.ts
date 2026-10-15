@@ -64,7 +64,7 @@ export function downloadCsv(rows: Application[]) {
     lines.push([
       formatUk(r.created_at).full, r.status, r.full_name, r.email, r.university, r.course_and_year,
       r.social_handles ?? "", r.why_ambassador, r.how_get_students,
-      src.referrer ?? "", src.utm_source ?? "", src.utm_medium ?? "", src.utm_campaign ?? "",
+      src["referrer"] ?? "", src["utm_source"] ?? "", src["utm_medium"] ?? "", src["utm_campaign"] ?? "",
     ].map(cell).join(","));
   }
   const blob = new Blob(["\uFEFF" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" });

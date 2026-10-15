@@ -21,7 +21,7 @@ function ResetPage() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (pw.length < 8) return setMsg("Use at least 8 characters.");
+    if (pw.length < 8) { setMsg("Use at least 8 characters."); return; }
     setBusy(true); setMsg(null);
     const { error } = await supabase.auth.updateUser({ password: pw });
     setBusy(false);
