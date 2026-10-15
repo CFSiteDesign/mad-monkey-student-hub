@@ -5,6 +5,7 @@ import { pillClass } from "@/components/PillButton";
 import { Reveal } from "@/components/Reveal";
 import { DestinationCard } from "@/components/DestinationCard";
 import { destinations } from "@/data/destinations";
+import { cn } from "@/lib/utils";
 
 const TITLE = "Mad Monkey Student Hub | Become a Student Travel Ambassador";
 const DESC = "Love travel, events and bringing people together? This one's for you.";
@@ -103,7 +104,7 @@ function Index() {
                 <p>Build your skills, bring your ideas to life, earn commission and unlock unreal travel perks.</p>
               </div>
               <div className="mt-10">
-                <ApplyBtn />
+                <ApplyBtn outline />
               </div>
             </Reveal>
           </div>
