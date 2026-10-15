@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      student_ambassador_applications: {
+        Row: {
+          course_and_year: string
+          created_at: string
+          email: string
+          full_name: string
+          how_get_students: string
+          id: string
+          social_handles: string | null
+          source: string | null
+          status: string
+          university: string
+          user_agent: string | null
+          why_ambassador: string
+        }
+        Insert: {
+          course_and_year: string
+          created_at?: string
+          email: string
+          full_name: string
+          how_get_students: string
+          id?: string
+          social_handles?: string | null
+          source?: string | null
+          status?: string
+          university: string
+          user_agent?: string | null
+          why_ambassador: string
+        }
+        Update: {
+          course_and_year?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          how_get_students?: string
+          id?: string
+          social_handles?: string | null
+          source?: string | null
+          status?: string
+          university?: string
+          user_agent?: string | null
+          why_ambassador?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
