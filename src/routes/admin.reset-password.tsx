@@ -37,13 +37,13 @@ function ResetPage() {
         {done ? (
           <div className="mt-6 text-center">
             <p>Your password has been updated.</p>
-            <Link to="/admin" className={pillClass("primary", "md") + " mt-6"}>Go to admin</Link>
+            <Link to="/admin" className={pillClass({ className: "mt-6" })}>Go to admin</Link>
           </div>
         ) : (
           <form onSubmit={submit} className="mt-6 space-y-4">
             <input type="password" className={inputCls} placeholder="New password" autoComplete="new-password" value={pw} onChange={(e) => setPw(e.target.value)} />
             {msg && <p className="text-sm font-semibold text-destructive">{msg}</p>}
-            <button disabled={busy} className={pillClass("primary", "md") + " w-full"}>{busy ? "Saving..." : "Save password"}</button>
+            <button disabled={busy} className={pillClass({ className: "w-full" })}>{busy ? "Saving..." : "Save password"}</button>
           </form>
         )}
       </div>
