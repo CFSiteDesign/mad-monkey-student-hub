@@ -9,6 +9,8 @@ export const getRouter = () => {
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
+    // Prefetched route data is treated as immediately stale so a page always
+    // shows current data when someone lands on it.
     defaultPreloadStaleTime: 0,
   });
 

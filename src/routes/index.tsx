@@ -5,6 +5,7 @@ import { pillClass } from "@/components/PillButton";
 import { Reveal } from "@/components/Reveal";
 import { DestinationCard } from "@/components/DestinationCard";
 import { destinations } from "@/data/destinations";
+import { cn } from "@/lib/utils";
 
 const TITLE = "Mad Monkey Student Hub | Become a Student Travel Ambassador";
 const DESC = "Love travel, events and bringing people together? This one's for you.";
@@ -53,9 +54,9 @@ const faqs: { q: string; a: string[] }[] = [
   { q: "What happens after I apply?", a: ["We'll review your application and invite shortlisted applicants for an informal chat with our team."] },
 ];
 
-function ApplyBtn({ label = "Apply now", variant = "primary" as const, size = "lg" as const }: { label?: string; variant?: "primary" | "lime" | "ink"; size?: "sm" | "md" | "lg" }) {
+function ApplyBtn({ label = "Apply now", variant = "primary" as const, size = "lg" as const, outline = false }: { label?: string; variant?: "primary" | "lime" | "ink"; size?: "sm" | "md" | "lg"; outline?: boolean }) {
   return (
-    <Link to="/apply" className={pillClass({ variant, size, className: "text-center" })}>
+    <Link to="/apply" className={pillClass({ variant, size, className: cn("text-center", outline && "ring-4 ring-background") })}>
       {label}
     </Link>
   );
@@ -103,7 +104,7 @@ function Index() {
                 <p>Build your skills, bring your ideas to life, earn commission and unlock unreal travel perks.</p>
               </div>
               <div className="mt-10">
-                <ApplyBtn />
+                <ApplyBtn outline />
               </div>
             </Reveal>
           </div>
