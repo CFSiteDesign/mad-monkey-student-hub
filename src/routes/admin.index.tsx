@@ -161,7 +161,7 @@ function Dashboard({ email, onSignOut }: { email: string; onSignOut: () => void 
     setError(false); setRows(null);
     fetchAll().then(setRows).catch(() => setError(true));
   }, []);
-  useEffect(load, [load]);
+  useEffect(() => { load(); }, [load]);
 
   const counts = useMemo(() => {
     const c: Record<string, number> = { all: 0, new: 0, shortlisted: 0, rejected: 0 };
@@ -185,7 +185,7 @@ function Dashboard({ email, onSignOut }: { email: string; onSignOut: () => void 
     setSaving(true);
     const { data, error } = await supabase.from("student_ambassador_applications").update({ status }).eq("id", id).select("id");
     setSaving(false);
-    if (error || !data?.length) return toast.error("Couldn't save. Please try again.");
+    if (error || !data?.length) { toast.error("Couldn't save. Please try again."); return; }
     setRows((rs) => rs?.map((r) => (r.id === id ? { ...r, status } : r)) ?? rs);
     toast.success("Saved");
   }
