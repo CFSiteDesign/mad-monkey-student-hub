@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import type { Session } from "@supabase/supabase-js";
-import logo from "@/assets/mad-monkey-logo.png.asset.json";
+import logo from "@/assets/mad-monkey-logo.png";
 import { pillClass } from "@/components/PillButton";
 import { Toaster } from "@/components/ui/sonner";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
@@ -51,7 +51,7 @@ function AdminPage() {
   else if (!isAdmin)
     body = (
       <Center>
-        <img src={logo.url} alt="Mad Monkey" className="mx-auto h-14 w-auto" />
+        <img src={logo} alt="Mad Monkey" className="mx-auto h-14 w-auto" />
         <p className="mt-6 text-center font-bold">This account doesn't have admin access.</p>
         <button onClick={signOut} className={pillClass({ variant: "outline", className: "mt-6 w-full" })}>Sign out</button>
       </Center>
@@ -88,11 +88,11 @@ function Login() {
         const { data: ok, error: rpcErr } = await supabase.rpc("is_student_hub_admin_email", { p_email: em });
         if (rpcErr) { setErr("Something went wrong. Please try again."); return; }
         if (!ok) { setErr("This email doesn't have admin access."); return; }
-        const { error } = await supabase.auth.signUp({ email: em, password: pw, options: { emailRedirectTo: `${window.location.origin}/admin` } });
+        const { error } = await supabase.auth.signUp({ email: em, password: pw, options: { emailRedirectTo: `${window.location.origin}${import.meta.env.BASE_URL}admin` } });
         if (error) setErr(error.message);
         else setInfo("Check your inbox to confirm your email, then sign in here.");
       } else {
-        const { error } = await supabase.auth.resetPasswordForEmail(em, { redirectTo: `${window.location.origin}/admin/reset-password` });
+        const { error } = await supabase.auth.resetPasswordForEmail(em, { redirectTo: `${window.location.origin}${import.meta.env.BASE_URL}admin/reset-password` });
         if (error) setErr(error.message);
         else setInfo("If that email has an account, a reset link is on its way.");
       }
@@ -103,7 +103,7 @@ function Login() {
 
   return (
     <Center>
-      <img src={logo.url} alt="Mad Monkey" className="mx-auto h-14 w-auto" />
+      <img src={logo} alt="Mad Monkey" className="mx-auto h-14 w-auto" />
       <h1 className="headline mt-6 text-center text-2xl">Student Hub Admin</h1>
       {mode !== "signin" && <p className="mt-2 text-center text-sm text-muted-foreground">{mode === "signup" ? "Create your password" : "Reset your password"}</p>}
       <form onSubmit={submit} className="mt-6 space-y-4">
@@ -194,7 +194,7 @@ function Dashboard({ email, onSignOut }: { email: string; onSignOut: () => void 
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-20 border-b border-border bg-background">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-          <img src={logo.url} alt="Mad Monkey" className="h-9 w-auto" />
+          <img src={logo} alt="Mad Monkey" className="h-9 w-auto" />
           <span className="eyebrow hidden text-primary sm:inline">Student Hub Admin</span>
           <div className="ml-auto flex min-w-0 items-center gap-3">
             <span className="hidden truncate text-sm text-muted-foreground md:inline">{email}</span>

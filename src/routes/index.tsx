@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import logo from "@/assets/mad-monkey-logo.png.asset.json";
+import logo from "@/assets/mad-monkey-logo.png";
 import { pillClass } from "@/components/PillButton";
 import { Reveal } from "@/components/Reveal";
 import { DestinationCard } from "@/components/DestinationCard";
@@ -77,7 +77,7 @@ function Index() {
       <header className="sticky top-0 z-40 border-b-2 border-ink bg-background">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:h-20 sm:px-6">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo.url} alt="Mad Monkey" className="h-8 w-auto sm:h-10" />
+            <img src={logo} alt="Mad Monkey" className="h-8 w-auto sm:h-10" />
             <span className="hidden rounded-full bg-secondary px-3 py-1 text-[0.7rem] font-extrabold uppercase tracking-wider text-secondary-foreground min-[400px]:inline">
               Student Hub
             </span>
@@ -254,7 +254,7 @@ function Index() {
 
       <footer className="border-t-2 border-ink py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 text-sm font-semibold sm:flex-row sm:justify-between sm:px-6">
-          <img src={logo.url} alt="Mad Monkey" className="h-9 w-auto" />
+          <img src={logo} alt="Mad Monkey" className="h-9 w-auto" />
           <div className="flex items-center gap-5">
             <span>© Mad Monkey Hostels</span>
             <a href="https://madmonkeyhostels.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-primary">madmonkeyhostels.com</a>

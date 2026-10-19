@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import { z } from "zod";
-import logo from "@/assets/mad-monkey-logo.png.asset.json";
+import logo from "@/assets/mad-monkey-logo.png";
 import { pillClass } from "@/components/PillButton";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -119,7 +119,7 @@ function ApplyPage() {
     <div className="flex min-h-dvh flex-col bg-background">
       <header className="border-b-2 border-ink">
         <div className="mx-auto flex h-16 max-w-3xl items-center justify-between px-4 sm:px-6">
-          <Link to="/"><img src={logo.url} alt="Mad Monkey" className="h-8 w-auto sm:h-9" /></Link>
+          <Link to="/"><img src={logo} alt="Mad Monkey" className="h-8 w-auto sm:h-9" /></Link>
           <span className="text-xs font-extrabold uppercase tracking-wider text-primary">Student Hub</span>
         </div>
         {q && (
@@ -138,7 +138,7 @@ function ApplyPage() {
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-4 py-10 sm:px-6">
         {step === -1 && (
           <div key="intro" className="step-in">
-            <img src={logo.url} alt="" className="h-14 w-auto" />
+            <img src={logo} alt="" className="h-14 w-auto" />
             <h1 className="headline mt-8 text-4xl sm:text-6xl">Apply to Become a Mad Monkey Student Ambassador</h1>
             <p className="mt-6 text-lg font-semibold">Love travel and have ideas for getting other students exploring Southeast Asia?</p>
             <p className="mt-3 text-lg font-medium text-muted-foreground">Tell us a little about yourself and how you'd approach being a Mad Monkey Student Ambassador.</p>
@@ -207,7 +207,7 @@ function ApplyPage() {
 
         {step === total && (
           <div key="done" className="step-in text-center">
-            <img src={logo.url} alt="Mad Monkey" className="mx-auto h-14 w-auto" />
+            <img src={logo} alt="Mad Monkey" className="mx-auto h-14 w-auto" />
             <div className="mx-auto mt-8 flex h-20 w-20 items-center justify-center rounded-full bg-secondary text-4xl font-black sticker">✓</div>
             <h1 className="headline mt-8 text-4xl sm:text-6xl">Thanks for applying!</h1>
             <p className="mx-auto mt-6 max-w-xl text-lg font-medium">We've received your Student Ambassador application. Our team will review it and be in touch if you're shortlisted for the next stage.</p>

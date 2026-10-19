@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import logo from "@/assets/mad-monkey-logo.png.asset.json";
+import logo from "@/assets/mad-monkey-logo.png";
 import { pillClass } from "@/components/PillButton";
 import { supabase } from "@/integrations/supabase/client";
 import { adminHead } from "@/lib/admin";
@@ -32,7 +32,7 @@ function ResetPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-background px-5 py-10">
       <div className="w-full max-w-sm">
-        <img src={logo.url} alt="Mad Monkey" className="mx-auto h-14 w-auto" />
+        <img src={logo} alt="Mad Monkey" className="mx-auto h-14 w-auto" />
         <h1 className="headline mt-6 text-center text-2xl">Set a new password</h1>
         {done ? (
           <div className="mt-6 text-center">
